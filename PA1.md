@@ -22,7 +22,7 @@ hist(total_by_day$steps, breaks=seq(0,25000,2500), main="Total number of steps t
      xlab="Steps", ylab="Number of days")
 ```
 
-![](PA1_files/figure-html/total steps per day-1.png)<!-- -->
+![](PA1_files/figure-html/total-steps-per-day-1.png)<!-- -->
 
 ```r
 #calculate and report the mean and median steps taken
@@ -41,7 +41,7 @@ plot(average_by_interval$interval, average_by_interval$steps, type="l",
      xlab="Time interval", ylab="Average number of steps")
 ```
 
-![](PA1_files/figure-html/average daily activity pattern-1.png)<!-- -->
+![](PA1_files/figure-html/average-daily-activity-pattern-1.png)<!-- -->
 
 ```r
 #reporting the interval with the max steps taken
@@ -75,7 +75,7 @@ hist(new_total_by_day$steps, breaks=seq(0,25000,2500), main="Total number of ste
      xlab="Steps", ylab="Number of days")
 ```
 
-![](PA1_files/figure-html/new statistics with imputed data-1.png)<!-- -->
+![](PA1_files/figure-html/new-statistics-with-imputed-data-1.png)<!-- -->
 
 ```r
 new_mean_steps <- mean(new_total_by_day$steps)
@@ -100,4 +100,4 @@ p <- ggplot(sep_activity, aes(interval, steps))
 p + geom_line() + xlab("Time") + ylab("Number of steps") + facet_grid(weekday_type ~ .)
 ```
 
-![](PA1_files/figure-html/activity patterns for weekdays and weekends-1.png)<!-- -->
+![](PA1_files/figure-html/activity-patterns-for-weekdays-and-weekends-1.png)<!-- -->

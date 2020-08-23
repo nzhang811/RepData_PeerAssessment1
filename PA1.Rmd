@@ -8,12 +8,12 @@ output:
 
 
 ## Loading and preprocessing the data
-```{r loading activity data}
+```{r loading-activity-data}
 activity <- read.csv("activity.csv")
 ```
 
 ## What is mean total number of steps taken per day?
-```{r total steps per day}
+```{r total-steps-per-day}
 #organize the data by date
 total_by_day <- aggregate(steps~date, activity, sum)
 hist(total_by_day$steps, breaks=seq(0,25000,2500), main="Total number of steps taken perday",
@@ -27,7 +27,7 @@ median_steps <- median(total_by_day$steps)
 The mean steps taken per day is `r format(mean_steps, f="f")`, the median is `r format(median_steps, f="d")`.
 
 ## What is the average daily activity pattern?
-```{r average daily activity pattern}
+```{r average-daily-activity-pattern}
 #organize the data by time interval
 average_by_interval <- aggregate(steps~interval, activity, mean, rm.na=T)
 plot(average_by_interval$interval, average_by_interval$steps, type="l",
@@ -43,7 +43,7 @@ The time interval that has the maximum number of steps is `r max_interval`.
 
 There are `r sum(is.na(activity$steps))` rows with NAs in the dataset.
 
-```{r imputing missing values}
+```{r imputing-missing-values}
 
 #imputing NA with mean steps taken for the corresponding time interval
 activity_impute <- activity
@@ -57,7 +57,7 @@ for (i in 1:nrow(activity_impute)) {
 }
 ```
 
-```{r new statistics with imputed data}
+```{r new-statistics-with-imputed-data}
 new_total_by_day <- aggregate(steps~date, activity_impute, sum)
 hist(new_total_by_day$steps, breaks=seq(0,25000,2500), main="Total number of steps taken perday with imputed data",
      xlab="Steps", ylab="Number of days")
@@ -68,7 +68,7 @@ new_median_steps <- median(new_total_by_day$steps)
 The mean steps taken per day is `r format(new_mean_steps, f="f")`, the median is `r format(new_median_steps, f="d")` with imputed data. Filling NA values increased the frequencies in the histogram, especially the middle bin. However, it doesn't change the mean and median significantly as the means for each time interval are used to fill in the missing values.
 
 ## Are there differences in activity patterns between weekdays and weekends?
-```{r activity patterns for weekdays and weekends}
+```{r activity-patterns-for-weekdays-and-weekends}
 library("ggplot2")
 
 #converting the date to Date datatype
